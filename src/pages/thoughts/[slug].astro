@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+  const thoughts = await getCollection("thoughts");
+
+  return thoughts.map((thought) => {
+    return {
+      params: {
+        slug: thought.data.properties.Name.replaceAll(" ", "-").trim(),
+      },
+      props: {
+        thought,
+      },
+    };
+  });
+}
+
+export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
+const { thought } = Astro.props;
+
+const { Content, headings } = await render(thought);
+---
+
+<BlogLayout>
+  {thought.data.properties.Name}
+</BlogLayout>

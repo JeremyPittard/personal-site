@@ -1,0 +1,7 @@
+:root {
+  --font-family-sans: "Lexend Variable", sans-serif;
+  --font-family-serif: "OpenDyslexic", sans-serif;
+  --font-size-base: 18px;
+
+  --font-body: var(--font-family-sans);
+}
