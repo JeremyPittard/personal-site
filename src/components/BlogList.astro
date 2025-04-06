@@ -5,23 +5,25 @@ interface Props {
   postsToShow?: number;
 }
 
-const { postsToShow = 10 }: Props = Astro.props;
+const { postsToShow = 4 }: Props = Astro.props;
 const allBlogPosts = await getCollection("thoughts");
 ---
 
-<ul>
-  {
-    allBlogPosts.map((post, index) => (
-      <li>
-        <a
-          href={`/thoughts/${post.data.properties.Name.replaceAll(" ", "-").trim()}`}
-        >
-          {post.data.properties.Name}
-        </a>
-      </li>
-    ))
-  }
-</ul>
-<script define:vars={{ allBlogPosts }}>
-  console.log(allBlogPosts);
-</script>
+<section>
+  <ul>
+    {
+      allBlogPosts.map((post, index) => {
+        if (index >= postsToShow) return null;
+        return (
+          <li>
+            <a
+              href={`/thoughts/${post.data.properties.Name.replaceAll(" ", "-").trim()}`}
+            >
+              {post.data.properties.Name}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>

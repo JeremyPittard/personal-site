@@ -238,6 +238,6 @@
   margin-top: auto;
 }
 
-.narrow {
+.content {
   max-width: var(--max-page-width);
 }

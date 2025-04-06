@@ -2,14 +2,19 @@
 import Logo from "../assets/logo.svg";
 ---
 
-<header class="header narrow mx-auto">
+<header class="header content mx-auto pb-4">
   <nav>
     <ul>
-      <li><a href="/"><Logo width={50} height={50} /></a></li>
+      <li><a class="home-link" href="/"><Logo width={50} height={50} /></a></li>
     </ul>
   </nav>
 </header>
 <style>
+  header {
+    padding-bottom: var(--spacing-xs);
+    padding-top: 0;
+    margin-bottom: var(--spacing-md);
+  }
   svg {
     --svg-fill: var(--color-background);
     --svg-stroke: var(--color-text);

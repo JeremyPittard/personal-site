@@ -4,5 +4,12 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <slot />
+  <main class="page content mx-auto">
+    <slot />
+  </main>
 </BaseLayout>
+<style>
+  main {
+    --max-page-width: 35em;
+  }
+</style>

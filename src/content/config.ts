@@ -29,6 +29,7 @@ const thoughts = defineCollection({
           property?.date?.start ? new Date(property.date.start) : undefined
         ),
       Featured: transformedPropertySchema.checkbox.optional(),
+      post: transformedPropertySchema.rich_text.optional(),
     }),
   }),
 });
