@@ -6,4 +6,12 @@ export default defineConfig({
   experimental: {
     svg: true,
   },
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.amazonaws.com",
+      },
+    ],
+  },
 });

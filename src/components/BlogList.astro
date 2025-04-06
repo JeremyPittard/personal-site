@@ -10,6 +10,7 @@ const allBlogPosts = await getCollection("thoughts");
 ---
 
 <section>
+  {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
   <ul>
     {
       allBlogPosts.map((post, index) => {

@@ -20,10 +20,20 @@ export async function getStaticPaths() {
 export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { thought } = Astro.props;
 
-const { Content, headings } = await render(thought);
+const { Content } = await render(thought);
 ---
 
 <BlogLayout>
-  {thought.data.properties.Name}
+  {
+    thought?.data?.cover?.type === "file" ? (
+      <img src={thought.data.cover.file.url} alt="" />
+    ) : null
+  }
+  <h1>
+    {thought?.data?.properties?.Name}
+  </h1>
   <Content />
 </BlogLayout>
+<script define:vars={{ thought }}>
+  console.log(thought);
+</script>
