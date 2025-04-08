@@ -1,10 +1,8 @@
 ---
 import "../styles/main.css";
-import "@fontsource-variable/lexend";
-import "@fontsource-variable/space-grotesk";
 import "@fontsource/opendyslexic";
 import "@fontsource/atkinson-hyperlegible-next";
-import Header from "../components/Header.astro";
+import "@fontsource-variable/bitter";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
@@ -21,7 +19,6 @@ import { fade } from "astro:transitions";
     <ClientRouter />
   </head>
   <body>
-    <Header />
     <div transition:animate={fade({ duration: "0.3s" })}>
       <slot />
     </div>

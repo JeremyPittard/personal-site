@@ -7,12 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-  padding: clamp(1rem, 2vw, 2rem);
-  padding-top: var(--spacing-xxl);
-
-  @media (min-width: 768px) {
-    padding-top: var(--spacing-3xl);
-  }
+  padding: clamp(0, 2vw, 1rem);
 }
 main,
 header,
@@ -30,7 +25,7 @@ svg {
     stroke: var(--svg-stroke, currentColor);
   }
 }
-
+body,
 p,
 a,
 h1,
@@ -41,9 +36,23 @@ h5,
 h6 {
   font-weight: 400;
   font-size: var(--font-size-base, 18px);
+
+  @media (min-width: 1400px) {
+    font-size: calc(var(--font-size-base) * 1.2);
+  }
 }
 
-a:not(.home-link) {
+p {
+  margin-bottom: 1.25rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+}
+
+a:not(.card__link) {
   position: relative;
   text-decoration: underline;
 
@@ -51,12 +60,11 @@ a:not(.home-link) {
     content: "";
     position: absolute;
     left: -3px;
-    bottom: 0;
     height: 100%;
     width: calc(100% + 6px);
     background-color: var(--color-text);
     transform: scaleY(0);
-    transition: transform 100ms linear;
+    transition: transform 75ms linear;
     transform-origin: bottom;
     z-index: -1;
   }

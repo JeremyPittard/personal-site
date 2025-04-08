@@ -29,7 +29,26 @@ const thoughts = defineCollection({
           property?.date?.start ? new Date(property.date.start) : undefined
         ),
       Featured: transformedPropertySchema.checkbox.optional(),
-      post: transformedPropertySchema.rich_text.optional(),
+      Published: propertySchema.date.optional().transform((property) =>
+        property?.date?.start
+          ? new Date(property.date.start).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : undefined
+      ),
+      Tags: z.object({
+        id: z.string(),
+        type: z.literal("multi_select"),
+        multi_select: z.array(
+          z.object({
+            id: z.string(),
+            name: z.string(),
+            color: z.string(),
+          })
+        ),
+      }),
     }),
   }),
 });

@@ -37,6 +37,8 @@
   --color-tan-900: #595754;
   --color-tan-950: #3b3937;
 
-  --color-background: light-dark(var(--color-tan), var(--color-gondola));
-  --color-text: light-dark(var(--color-gondola), var(--color-alto));
+  --color-primary: var(--color-gondola);
+  --color-secondary: var(--color-alto);
+  --color-text: light-dark(var(--color-tan), var(--color-gondola));
+  --color-background: light-dark(var(--color-alto), var(--color-tan));
 }

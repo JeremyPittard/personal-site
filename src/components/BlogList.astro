@@ -1,26 +1,35 @@
 ---
 import { getCollection } from "astro:content";
+import TagList from "./TagList.astro";
+import Tag from "./Tag.astro";
 
 interface Props {
   postsToShow?: number;
+  showAllPostsLink?: boolean;
 }
 
-const { postsToShow = 4 }: Props = Astro.props;
+const { postsToShow = 10, showAllPostsLink }: Props = Astro.props;
 const allBlogPosts = await getCollection("thoughts");
 ---
 
-<section>
+<section class="blog-list">
+  <h2>Latest thoughts:</h2>
+  {showAllPostsLink ? <a href="/thoughts">see all</a> : null}
   {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
   <ul>
     {
       allBlogPosts.map((post, index) => {
+        console.log(post.data.properties.Tags);
         if (index >= postsToShow) return null;
         return (
           <li>
             <a
+              class="card__link"
               href={`/thoughts/${post.data.properties.Name.replaceAll(" ", "-").trim()}`}
             >
               {post.data.properties.Name}
+              {post.data.properties.Published}
+              <TagList tags={post.data.properties.Tags.multi_select} />
             </a>
           </li>
         );

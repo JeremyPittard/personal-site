@@ -1,0 +1,93 @@
+---
+import Logo from "../assets/logo.svg";
+
+const wordList: Array<string> = [
+  "fast",
+  "accessible",
+  "fun",
+  "useful",
+  "creative",
+];
+---
+
+<section class="hero p-6">
+  <div class="content flex-col flex-center py-6">
+    <Logo width={72} />
+    <h1>
+      I build
+      <span class="word-list">
+        {
+          wordList.map((word, index) => (
+            <span class={`word`}>{word} things.</span>
+          ))
+        }
+      </span>
+    </h1>
+  </div>
+</section>
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-primary);
+    margin-bottom: var(--spacing-xxl);
+    @media (min-width: 1440px) {
+      min-height: 85vh;
+    }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-top: var(--spacing-xl);
+    color: var(--color-tan);
+
+    @media (min-width: 1440px) {
+      font-size: 5rem;
+    }
+  }
+
+  .word {
+    display: none;
+    opacity: 0;
+    transition: all 250ms linear;
+    &.active {
+      display: block;
+    }
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    --svg-fill: var(--color-primary);
+    --svg-stroke: var(--color-background);
+    stroke-width: 2px;
+    filter: drop-shadow(2px 2px 0 var(--color-primary));
+    @media (min-width: 1440px) {
+      width: 120px;
+    }
+  }
+</style>
+<script>
+  const wordList = document.querySelectorAll(".word");
+  let currentIndex = 0;
+
+  function showNextWord() {
+    wordList[currentIndex].classList.remove("active", "visible");
+    currentIndex = (currentIndex + 1) % wordList.length;
+    wordList[currentIndex].classList.add("active");
+    setTimeout(() => wordList[currentIndex].classList.add("visible"), 50);
+  }
+
+  // Initialize the first word
+  wordList[currentIndex].classList.add("active", "visible");
+
+  // Cycle through words every 2 seconds
+  setInterval(showNextWord, 5000);
+</script>

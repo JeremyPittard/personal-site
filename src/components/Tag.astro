@@ -1,0 +1,30 @@
+---
+interface tag {
+  id: string;
+  name: string;
+  color: string;
+}
+
+interface Props {
+  tag: tag;
+}
+
+const { tag } = Astro.props;
+---
+
+<li>
+  {tag.name}
+</li>
+
+<style>
+  li {
+    color: var(--color-background);
+    background-color: var(--color-text);
+    font-size: 0.8rem;
+    position: relative;
+    a {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+</style>

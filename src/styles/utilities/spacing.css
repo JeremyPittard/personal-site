@@ -1,33 +1,6 @@
 /* Utility spacing classes */
 
 /* Padding utilities */
-.p-xxs {
-  padding: var(--spacing-xxs);
-}
-
-.p-xs {
-  padding: var(--spacing-xs);
-}
-
-.p-sm {
-  padding: var(--spacing-sm);
-}
-
-.p-md {
-  padding: var(--spacing-md);
-}
-
-.p-lg {
-  padding: var(--spacing-lg);
-}
-
-.p-xl {
-  padding: var(--spacing-xl);
-}
-
-.p-xxl {
-  padding: var(--spacing-xxl);
-}
 
 .p-1 {
   padding: var(--spacing-xxs);
@@ -236,8 +209,4 @@
 
 .mt-auto {
   margin-top: auto;
-}
-
-.content {
-  max-width: var(--max-page-width);
 }
