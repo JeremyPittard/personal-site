@@ -8,7 +8,7 @@ import type { GetStaticPaths } from "astro";
 export const getStaticPaths = (async ({ paginate }) => {
   const thoughts = await getCollection("thoughts");
 
-  return paginate(thoughts, { pageSize: 1 });
+  return paginate(thoughts, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
