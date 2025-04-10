@@ -11,13 +11,20 @@ type tags = Array<tag>;
 const { tags } = Astro.props;
 ---
 
-<ul>
-  {tags.map((tag: tag) => <Tag tag={tag} />)}
-</ul>
+{
+  tags ? (
+    <ul>
+      {tags.map((tag: tag) => (
+        <Tag tag={tag} />
+      ))}
+    </ul>
+  ) : null
+}
 <style>
   ul {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    align-items: flex-end;
   }
 </style>

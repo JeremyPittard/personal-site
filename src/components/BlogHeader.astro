@@ -1,0 +1,27 @@
+---
+import Logo from "../assets/logo.svg";
+---
+
+<header class="blog-header">
+  <nav class="content mx-auto">
+    <a href="/">
+      <Logo height={60} />
+    </a>
+  </nav>
+</header>
+<style>
+  header {
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-text) 60%,
+      var(--color-background) 60%
+    );
+    margin-bottom: var(--spacing-xl);
+  }
+  svg {
+    --svg-fill: var(--color-background);
+    --svg-stroke: var(--color-text);
+    stroke-width: 4px;
+    filter: drop-shadow(4px 4px 0 var(--color-text));
+  }
+</style>

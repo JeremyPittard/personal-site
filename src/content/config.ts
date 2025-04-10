@@ -31,11 +31,14 @@ const thoughts = defineCollection({
       Featured: transformedPropertySchema.checkbox.optional(),
       Published: propertySchema.date.optional().transform((property) =>
         property?.date?.start
-          ? new Date(property.date.start).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
+          ? {
+              date: new Date(property.date.start).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
+              stamp: property.date.start,
+            }
           : undefined
       ),
       Tags: z.object({

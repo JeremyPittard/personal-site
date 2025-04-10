@@ -1,5 +1,6 @@
 :root {
-  --spacing-xxs: 4px;
+  --spacing-3xs: 4px;
+  --spacing-xxs: 6px;
   --spacing-xs: 8px;
   --spacing-sm: 12px;
   --spacing-md: 16px;
@@ -8,5 +9,5 @@
   --spacing-xxl: 48px;
   --spacing-3xl: 128px;
 
-  --max-page-width: 35em;
+  --max-page-width: 500px;
 }

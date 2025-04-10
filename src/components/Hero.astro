@@ -1,29 +1,27 @@
 ---
 import Logo from "../assets/logo.svg";
 
-const wordList: Array<string> = [
-  "fast",
-  "accessible",
-  "fun",
-  "useful",
-  "creative",
-];
+// TODO consider adding this to notion also
+const wordList: Array<string> = ["fast", "accessible", "fun", "useful"];
 ---
 
 <section class="hero p-6">
-  <div class="content flex-col flex-center py-6">
+  <div class="flex-col flex-center py-6">
     <Logo width={72} />
-    <h1>
+    <p aria-hidden="true" class="words">
       I build
-      <span class="word-list">
+      <span class="word-list" aria-live="polite">
         {
           wordList.map((word, index) => (
-            <span class={`word`}>{word} things.</span>
+            <span class={`word ${index === 0 ? "active visible" : null}`}>
+              {word} things.
+            </span>
           ))
         }
       </span>
-    </h1>
+    </p>
   </div>
+  <h1 class="sr-only">I build {wordList.map((word) => `${word} things,`)}</h1>
 </section>
 <style>
   .hero {
@@ -40,11 +38,12 @@ const wordList: Array<string> = [
     }
   }
 
-  h1 {
-    font-size: 2.5rem;
+  p {
+    font-size: 2rem;
     line-height: 1.1;
     margin-top: var(--spacing-xl);
     color: var(--color-tan);
+    font-family: var(--font-title);
 
     @media (min-width: 1440px) {
       font-size: 5rem;
@@ -85,9 +84,6 @@ const wordList: Array<string> = [
     setTimeout(() => wordList[currentIndex].classList.add("visible"), 50);
   }
 
-  // Initialize the first word
-  wordList[currentIndex].classList.add("active", "visible");
-
-  // Cycle through words every 2 seconds
+  // Cycle through words every 5s
   setInterval(showNextWord, 5000);
 </script>

@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { Image } from "astro:assets";
+import TagList from "../../components/TagList.astro";
+
+export async function getStaticPaths() {
+  const thoughts = await getCollection("thoughts");
+
+  return thoughts.map((thought) => {
+    return {
+      params: {
+        slug: thought.data.properties.Name.replaceAll(" ", "-").trim(),
+      },
+      props: {
+        thought,
+      },
+    };
+  });
+}
+
+export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
+const { thought } = Astro.props;
+
+const { Content } = await render(thought);
+---
+
+<BlogLayout>
+  <TagList tags={thought.data.properties.Tags.multi_select} />
+  <h1>
+    {thought?.data?.properties?.Name}
+  </h1>
+  <!-- {
+    thought?.data?.cover?.type === "file" ? (
+      <Image
+        src={thought.data.cover.file.url}
+        alt=""
+        decoding="async"
+        loading="lazy"
+        inferSize={true}
+      />
+    ) : null
+  } -->
+  <div class="blog-content">
+    <Content />
+  </div>
+</BlogLayout>
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+    @media (min-width: 1440px) {
+      font-size: 5rem;
+    }
+  }
+  .blog-content {
+    h2,
+    h3 {
+      font-weight: bold;
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+</style>

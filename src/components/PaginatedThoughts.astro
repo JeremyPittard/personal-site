@@ -1,0 +1,42 @@
+---
+import Card from "./Card.astro";
+import TagList from "./TagList.astro";
+
+interface Props {
+  data: Array<any>;
+}
+
+const { data }: Props = Astro.props;
+---
+
+<section class="blog-list">
+  <div class="head"></div>
+  <ul>
+    {
+      data.map((post, index) => {
+        return <Card data={post.data} />;
+      })
+    }
+  </ul>
+</section>
+<style>
+  .blog-list {
+    margin-block: var(--spacing-xl);
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+  h2 {
+    font-family: var(--font-body);
+  }
+  .see-all {
+    font-size: 0.75rem;
+  }
+</style>

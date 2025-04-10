@@ -1,0 +1,29 @@
+---
+import PaginatedThoughts from "../../components/PaginatedThoughts.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { getCollection } from "astro:content";
+
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const thoughts = await getCollection("thoughts");
+
+  return paginate(thoughts, { pageSize: 1 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BlogLayout>
+  <!-- <PaginatedThoughts /> -->
+  <PaginatedThoughts data={page.data} />
+  {
+    page.lastPage > 1 && (
+      <nav>
+        {page.url.prev && <a href={page.url.prev}>Previous Page</a>}
+
+        {page.url.next && <a href={page.url.next}>Next Page</a>}
+      </nav>
+    )
+  }
+</BlogLayout>

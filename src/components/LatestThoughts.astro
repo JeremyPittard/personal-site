@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import Card from "./Card.astro";
+
+interface Props {
+  postsToShow?: number;
+  showAllPostsLink?: boolean;
+}
+
+const { postsToShow = 10, showAllPostsLink }: Props = Astro.props;
+const allBlogPosts = await getCollection("thoughts");
+const featuredPosts = allBlogPosts.filter(
+  (post) => post.data.properties.Featured
+);
+---
+
+<section class="blog-list">
+  <div class="head">
+    <h2>Latest thoughts:</h2>
+    <a href="/thoughts" class="see-all"> see all </a>
+    {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
+  </div>
+  <ul>
+    <!-- TODO Featured POST  -->
+    <!-- {
+      featuredPosts.map((post, index) => {
+        if (index >= postsToShow) return null;
+        return <Card data={post.data} />;
+      })
+    } -->
+    {
+      allBlogPosts.map((post, index) => {
+        if (index >= postsToShow) return null;
+        return <Card data={post.data} />;
+      })
+    }
+  </ul>
+</section>
+<style>
+  .blog-list {
+    margin-block: var(--spacing-xl);
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2 {
+    font-family: var(--font-body);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .see-all {
+    font-size: 0.75rem;
+  }
+</style>

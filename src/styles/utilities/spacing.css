@@ -51,11 +51,6 @@
   padding-right: var(--spacing-md);
 }
 
-.px-5 {
-  padding-left: var(--spacing-lg);
-  padding-right: var(--spacing-lg);
-}
-
 .px-6 {
   padding-left: var(--spacing-xl);
   padding-right: var(--spacing-xl);

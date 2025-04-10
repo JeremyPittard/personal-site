@@ -40,5 +40,6 @@
   --color-primary: var(--color-gondola);
   --color-secondary: var(--color-alto);
   --color-text: light-dark(var(--color-tan), var(--color-gondola));
+  --color-text-secondary: light-dark(var(--color-tan), var(--color-alto-900));
   --color-background: light-dark(var(--color-alto), var(--color-tan));
 }
