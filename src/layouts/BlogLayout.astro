@@ -1,0 +1,17 @@
+---
+import BlogHeader from "../components/BlogHeader.astro";
+import "../styles/main.css";
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout>
+  <BlogHeader />
+  <main class="content mx-auto">
+    <slot />
+  </main>
+</BaseLayout>
+<style>
+  :root {
+    --max-page-width: 35em;
+  }
+</style>

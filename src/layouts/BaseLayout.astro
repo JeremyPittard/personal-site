@@ -1,0 +1,27 @@
+---
+import "../styles/main.css";
+import "@fontsource/opendyslexic";
+import "@fontsource/atkinson-hyperlegible-next";
+import "@fontsource-variable/bitter";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { fade } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <div transition:animate={fade({ duration: "0.2s" })}>
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>

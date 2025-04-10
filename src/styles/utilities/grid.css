@@ -1,0 +1,25 @@
+/* Utility classes for grid layouts */
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.grid-two-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-gap {
+  display: grid;
+  gap: var(--gap-size, 1rem); /* Use a CSS variable for gap size */
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

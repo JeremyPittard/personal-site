@@ -1,0 +1,107 @@
+/* 1. Use a more-intuitive box-sizing model */
+* {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Set default line-height and font smoothing */
+html {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. Set default text size and family */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* 5. Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 6. Remove default padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* 7. Set default border styles */
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+/* 8. Ensure media elements fit their container */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 9. Remove default button styles */
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 10. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 11. Set default link styles */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* 12. Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* normalise */
+:root {
+  color-scheme: dark;
+}
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}

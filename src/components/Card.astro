@@ -1,0 +1,44 @@
+---
+import TagList from "./TagList.astro";
+
+interface Props {
+  data: any;
+}
+
+const { data } = Astro.props;
+---
+
+<li>
+  <a
+    class="card__link"
+    href={`/thoughts/${data.properties.Name.replaceAll(" ", "-").trim()}`}
+  >
+    <div>
+      <h3>{data.properties.Name}</h3>
+      <time datetime={data.properties.Published?.stamp}
+        >{data.properties.Published?.date}</time
+      >
+    </div>
+    <TagList tags={data.properties.Tags.multi_select} />
+  </a>
+</li>
+<style>
+  a {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+  }
+  li {
+    padding-block: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-text-secondary);
+  }
+
+  time {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+  }
+</style>

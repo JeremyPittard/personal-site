@@ -1,0 +1,4 @@
+.content {
+  max-width: var(--max-page-width);
+  padding-inline: var(--spacing-lg);
+}

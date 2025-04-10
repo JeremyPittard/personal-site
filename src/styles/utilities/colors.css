@@ -1,0 +1,27 @@
+/* Utility color classes */
+
+/* Text color utilities */
+.text-gondola {
+  color: var(--color-gondola);
+}
+
+.text-alto {
+  color: var(--color-alto);
+}
+
+.text-tan {
+  color: var(--color-tan);
+}
+
+/* Background color utilities */
+.bg-gondola {
+  background-color: var(--color-gondola);
+}
+
+.bg-alto {
+  background-color: var(--color-alto);
+}
+
+.bg-tan {
+  background-color: var(--color-tan);
+}

@@ -1,14 +1,20 @@
 {
-  "name": "personal-site",
+  "name": "jpittard.net",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.4.3",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.6.1"
+    "@fontsource-variable/bitter": "^5.2.6",
+    "@fontsource-variable/lexend": "^5.2.6",
+    "@fontsource-variable/space-grotesk": "^5.2.6",
+    "@fontsource/atkinson-hyperlegible-next": "^5.2.2",
+    "@fontsource/opendyslexic": "^5.2.5",
+    "astro": "^5.6.1",
+    "notion-astro-loader": "^0.4.0"
   }
 }

@@ -1,0 +1,89 @@
+---
+import Logo from "../assets/logo.svg";
+
+// TODO consider adding this to notion also
+const wordList: Array<string> = ["fast", "accessible", "fun", "useful"];
+---
+
+<section class="hero p-6">
+  <div class="flex-col flex-center py-6">
+    <Logo width={72} />
+    <p aria-hidden="true" class="words">
+      I build
+      <span class="word-list" aria-live="polite">
+        {
+          wordList.map((word, index) => (
+            <span class={`word ${index === 0 ? "active visible" : null}`}>
+              {word} things.
+            </span>
+          ))
+        }
+      </span>
+    </p>
+  </div>
+  <h1 class="sr-only">I build {wordList.map((word) => `${word} things,`)}</h1>
+</section>
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-primary);
+    margin-bottom: var(--spacing-xxl);
+    @media (min-width: 1440px) {
+      min-height: 85vh;
+    }
+  }
+
+  p {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-top: var(--spacing-xl);
+    color: var(--color-tan);
+    font-family: var(--font-title);
+
+    @media (min-width: 1440px) {
+      font-size: 5rem;
+    }
+  }
+
+  .word {
+    display: none;
+    opacity: 0;
+    transition: all 250ms linear;
+    &.active {
+      display: block;
+    }
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    --svg-fill: var(--color-primary);
+    --svg-stroke: var(--color-background);
+    stroke-width: 2px;
+    filter: drop-shadow(2px 2px 0 var(--color-primary));
+    @media (min-width: 1440px) {
+      width: 120px;
+    }
+  }
+</style>
+<script>
+  const wordList = document.querySelectorAll(".word");
+  let currentIndex = 0;
+
+  function showNextWord() {
+    wordList[currentIndex].classList.remove("active", "visible");
+    currentIndex = (currentIndex + 1) % wordList.length;
+    wordList[currentIndex].classList.add("active");
+    setTimeout(() => wordList[currentIndex].classList.add("visible"), 50);
+  }
+
+  // Cycle through words every 5s
+  setInterval(showNextWord, 5000);
+</script>
