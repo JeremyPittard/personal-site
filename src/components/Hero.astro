@@ -73,17 +73,22 @@ const wordList: Array<string> = ["fast", "accessible", "fun", "useful"];
     }
   }
 </style>
-<script is:inline>
-  const wordList = document.querySelectorAll(".word");
-  let currentIndex = 0;
+<script>
+  const init = () => {
+    const wordList = document.getElementsByClassName("word");
+    let currentIndex = 0;
+    const showNextWord = () => {
+      console.log(currentIndex);
+      wordList[currentIndex]?.classList.remove("active", "visible");
+      currentIndex = (currentIndex + 1) % wordList.length;
+      wordList[currentIndex]?.classList.add("active");
+      setTimeout(() => wordList[currentIndex]?.classList.add("visible"), 50);
+    };
+    setInterval(showNextWord, 5000);
+  };
 
-  function showNextWord() {
-    wordList[currentIndex].classList.remove("active", "visible");
-    currentIndex = (currentIndex + 1) % wordList.length;
-    wordList[currentIndex].classList.add("active");
-    setTimeout(() => wordList[currentIndex].classList.add("visible"), 50);
-  }
-
-  // Cycle through words every 5s
-  setInterval(showNextWord, 5000);
+  //first load
+  init();
+  //astro swap
+  document.addEventListener("astro:after-swap", init);
 </script>
