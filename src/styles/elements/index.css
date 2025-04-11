@@ -44,7 +44,7 @@ img {
   margin-bottom: var(--spacing-lg);
 
   @media (min-width: 1400px) {
-    font-size: calc(var(--font-size-base) * 1.2);
+    --font-size-base: var(--font-size-20);
   }
 }
 

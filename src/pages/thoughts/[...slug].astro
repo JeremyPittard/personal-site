@@ -44,8 +44,33 @@ const { Content } = await render(thought);
   <div class="blog-content">
     <Content />
   </div>
+  <button type="button" class="textToggle">Change Font</button>
 </BlogLayout>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const toggleButton = document.querySelector(".textToggle");
+    const contentContainer = document.querySelector(".blog-content");
+    const swapText = () => {
+      contentContainer?.classList.contains("open-dyslexic")
+        ? contentContainer.classList.remove("open-dyslexic")
+        : contentContainer?.classList.add("open-dyslexic");
+    };
+
+    toggleButton?.addEventListener("click", swapText);
+  });
+</script>
 <style>
+  .textToggle {
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    padding: var(--spacing-xs);
+    color: var(--color-background);
+    background-color: var(--color-text);
+    height: max-content;
+    width: var(--max-page-width);
+    font-family: var(--font-family-sans);
+  }
   h1 {
     font-size: 2rem;
     margin-bottom: var(--spacing-xs);
@@ -54,10 +79,22 @@ const { Content } = await render(thought);
     }
   }
   .blog-content {
+    font-family: var(--font-family-sans);
+
     h2,
     h3 {
       font-weight: bold;
       margin-bottom: var(--spacing-xs);
+      text-decoration: underline;
+    }
+
+    &.open-dyslexic {
+      font-family: var(--font-family-serif);
+
+      h2,
+      h3 {
+        font-family: var(--font-family-serif);
+      }
     }
   }
 </style>

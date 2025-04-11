@@ -20,10 +20,14 @@ import Logo from "../assets/logo.svg";
     margin-bottom: var(--spacing-xl);
   }
   svg {
-    margin-left: -36px;
+    margin-left: -18px;
     --svg-fill: var(--color-background);
     --svg-stroke: var(--color-text);
     stroke-width: 4px;
     filter: drop-shadow(4px 4px 0 var(--color-text));
+
+    @media (min-width: 768px) {
+      margin-left: -36px;
+    }
   }
 </style>
