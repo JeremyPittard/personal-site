@@ -5,6 +5,10 @@
   line-height: 1.6;
 }
 
+html {
+  background-color: var(--color-text);
+}
+
 body {
   display: flex;
   flex-direction: column;
