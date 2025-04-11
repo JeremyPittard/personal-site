@@ -63,13 +63,12 @@ const { Content } = await render(thought);
   .textToggle {
     position: fixed;
     bottom: 0;
-    margin: 0 auto;
+    left: 0;
     padding: var(--spacing-xs);
     color: var(--color-background);
     background-color: var(--color-text);
     height: max-content;
-    width: var(--max-page-width);
-    max-width: 100%;
+    width: 100svw;
     font-family: var(--font-family-sans);
   }
   h1 {
@@ -81,6 +80,7 @@ const { Content } = await render(thought);
   }
   .blog-content {
     font-family: var(--font-family-sans);
+    position: relative;
 
     h2,
     h3 {
