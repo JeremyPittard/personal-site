@@ -43,20 +43,27 @@ const { Content } = await render(thought);
   } -->
   <div class="blog-content">
     <Content />
-    <button type="button" class="textToggle">Change Font</button>
+    <select name="fontSelect" id="fontSelect" class="textToggle">
+      <option value="--font-family-sans"
+        >Atkinson Hyperlegible (low vision/default)</option
+      >
+      <option value="--font-family-fast">Fast (adhd)</option>
+      <option value="--font-family-open-dyslexic"
+        >Open Dyslexic (dyslexia)</option
+      >
+    </select>
   </div>
 </BlogLayout>
 <script>
   document.addEventListener("astro:page-load", () => {
     const toggleButton = document.querySelector(".textToggle");
-    const contentContainer = document.querySelector(".blog-content");
-    const swapText = () => {
-      contentContainer?.classList.contains("open-dyslexic")
-        ? contentContainer.classList.remove("open-dyslexic")
-        : contentContainer?.classList.add("open-dyslexic");
+    const contentContainer: HTMLElement =
+      document.querySelector(".blog-content")!;
+    const swapText = (event: any) => {
+      contentContainer.style.fontFamily = `var(${event.target.value})`;
     };
 
-    toggleButton?.addEventListener("click", swapText);
+    toggleButton?.addEventListener("change", (event: any) => swapText(event));
   });
 </script>
 <style>
@@ -86,7 +93,10 @@ const { Content } = await render(thought);
     h3 {
       font-weight: bold;
       margin-bottom: var(--spacing-xs);
-      text-decoration: underline;
+    }
+
+    &.fast {
+      font-family: var(--font-family-fast);
     }
 
     &.open-dyslexic {
@@ -95,6 +105,7 @@ const { Content } = await render(thought);
       h2,
       h3 {
         font-family: var(--font-family-serif);
+        text-decoration: underline;
       }
     }
   }
