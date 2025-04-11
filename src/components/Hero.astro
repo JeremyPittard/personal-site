@@ -77,14 +77,22 @@ const wordList: Array<string> = ["fast", "accessible", "fun", "useful"];
   const init = () => {
     const wordList = document.getElementsByClassName("word");
     let currentIndex = 0;
+    //due to astro view transition the setInterval(and setTimeouts)
+    // work a littel funky. Need to guard.
+    if (wordList.length === 0) {
+      return;
+    }
     const showNextWord = () => {
-      console.log(currentIndex);
       wordList[currentIndex]?.classList.remove("active", "visible");
       currentIndex = (currentIndex + 1) % wordList.length;
       wordList[currentIndex]?.classList.add("active");
       setTimeout(() => wordList[currentIndex]?.classList.add("visible"), 50);
     };
-    setInterval(showNextWord, 5000);
+    const caurouselInterval = setInterval(showNextWord, 1000);
+
+    document.addEventListener("astro:before-swap", () => {
+      clearInterval(caurouselInterval);
+    });
   };
 
   //first load
