@@ -19,6 +19,7 @@ const thoughts = defineCollection({
   schema: notionPageSchema({
     properties: z.object({
       Name: transformedPropertySchema.title,
+      Description: transformedPropertySchema.rich_text.optional(),
       Draft: transformedPropertySchema.checkbox.optional(),
       Created: transformedPropertySchema.created_time.optional(),
       URL: transformedPropertySchema.rich_text.optional(),

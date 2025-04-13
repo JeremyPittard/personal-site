@@ -1,0 +1,36 @@
+---
+
+---
+
+<select name="fontSelect" id="fontSelect" class="textToggle">
+  <option value="--font-family-sans"
+    >Atkinson Hyperlegible (low vision/default)</option
+  >
+  <option value="--font-family-fast">Fast (adhd)</option>
+  <option value="--font-family-open-dyslexic">Open Dyslexic (dyslexia)</option>
+</select>
+<style>
+  .textToggle {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: var(--spacing-xs);
+    color: var(--color-background);
+    background-color: var(--color-text);
+    height: max-content;
+    width: 100svw;
+    font-family: var(--font-family-sans);
+  }
+</style>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const toggleButton = document.querySelector(".textToggle");
+    const contentContainer: HTMLElement =
+      document.querySelector(".blog-content")!;
+    const swapText = (event: any) => {
+      contentContainer.style.fontFamily = `var(${event.target.value})`;
+    };
+
+    toggleButton?.addEventListener("change", (event: any) => swapText(event));
+  });
+</script>
