@@ -14,6 +14,21 @@ const featuredPosts = allBlogPosts.filter(
 );
 ---
 
+{
+  featuredPosts.length > 0 ? (
+    <section class="blog-list">
+      <div class="head">
+        <h2>Highlighted thought:</h2>
+      </div>
+      <ul>
+        {featuredPosts.map((post, index) => {
+          if (index >= postsToShow) return null;
+          return <Card data={post.data} />;
+        })}
+      </ul>
+    </section>
+  ) : null
+}
 <section class="blog-list">
   <div class="head">
     <h2>Latest thoughts:</h2>
@@ -21,7 +36,6 @@ const featuredPosts = allBlogPosts.filter(
     {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
   </div>
   <ul>
-    <!-- TODO Featured POST  -->
     <!-- {
       featuredPosts.map((post, index) => {
         if (index >= postsToShow) return null;
