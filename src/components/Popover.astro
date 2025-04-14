@@ -36,11 +36,21 @@
 
 <style>
   .popover {
+    font-size: 16px;
     color: var(--color-background);
     max-width: var(--max-page-width);
+    margin: 0 auto;
     background-color: var(--color-text);
     height: max-content;
-    width: 100svw;
     font-family: var(--font-family-sans);
+    padding: var(--spacing-xxs) var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+
+    button {
+      border: 1px solid var(--color-background);
+      padding: var(--spacing-xxs) var(--spacing-xs);
+      align-self: flex-end;
+    }
   }
 </style>

@@ -25,66 +25,66 @@ export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { thought } = Astro.props;
 
 const { Content } = await render(thought);
-
-console.log(thought.data.properties);
 ---
 
 <BlogLayout
   title={thought?.data?.properties?.Name}
   description={thought?.data?.properties?.Description}
 >
-  <TagList tags={thought.data.properties.Tags.multi_select} /ß>
+  <TagList tags={thought.data.properties.Tags.multi_select} />
   <h1>
     {thought?.data?.properties?.Name}
   </h1>
   <!-- {
     thought?.data?.cover?.type === "file" ? (
-      <Image
-        src={thought.data.cover.file.url}
-        alt=""
-        decoding="async"
-        loading="lazy"
-        inferSize={true}
-      />
+    <Image
+    src={thought.data.cover.file.url}
+    alt=""
+    decoding="async"
+    loading="lazy"
+    inferSize={true}
+    />
     ) : null
-  } -->
+    } -->
   <div class="blog-content">
     <Popover />
     <Content />
     <ReadingOptions />
   </div>
+</BlogLayout>
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
 
-  <style>
-    h1 {
-      font-size: 2rem;
-      margin-bottom: var(--spacing-xs);
-      @media (min-width: 1440px) {
-        font-size: 5rem;
-      }
+    @media (min-width: 768px) {
+      font-size: 3.5rem;
     }
-    .blog-content {
-      font-family: var(--font-family-sans);
-      position: relative;
+    @media (min-width: 1440px) {
+      font-size: 5rem;
+    }
+  }
+  .blog-content {
+    font-family: var(--font-family-sans);
+
+    h2,
+    h3 {
+      font-weight: bold;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    &.fast {
+      font-family: var(--font-family-fast);
+    }
+
+    &.open-dyslexic {
+      font-family: var(--font-family-serif);
 
       h2,
       h3 {
-        font-weight: bold;
-        margin-bottom: var(--spacing-xs);
-      }
-
-      &.fast {
-        font-family: var(--font-family-fast);
-      }
-
-      &.open-dyslexic {
         font-family: var(--font-family-serif);
-
-        h2,
-        h3 {
-          font-family: var(--font-family-serif);
-          text-decoration: underline;
-        }
+        text-decoration: underline;
       }
     }
-  </style>
-</BlogLayout>
+  }
+</style>

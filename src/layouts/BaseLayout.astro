@@ -13,7 +13,10 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description } = Astro.props;
+import baseOgImage from "../assets/main-og-image.png";
+
+const ogImage = Astro.props.ogImage || baseOgImage.src;
 ---
 
 <!doctype html>
@@ -23,6 +26,7 @@ const { title, description, ogImage } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:image" content={ogImage} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <ClientRouter />
