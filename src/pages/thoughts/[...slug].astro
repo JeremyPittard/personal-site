@@ -33,6 +33,7 @@ console.log(thought.data.properties);
   title={thought?.data?.properties?.Name}
   description={thought?.data?.properties?.Description}
 >
+  <TagList tags={thought.data.properties.Tags.multi_select} /ß>
   <h1>
     {thought?.data?.properties?.Name}
   </h1>
@@ -49,7 +50,6 @@ console.log(thought.data.properties);
   } -->
   <div class="blog-content">
     <Popover />
-    <TagList tags={thought.data.properties.Tags.multi_select} />
     <Content />
     <ReadingOptions />
   </div>
