@@ -44,8 +44,12 @@ const wordList: Array<string> = ["fast", "accessible", "fun", "useful"];
     margin-top: var(--spacing-xl);
     color: var(--color-tan);
     font-family: var(--font-title);
+    
+    @media (min-width: 768px) {
+      font-size: 3.5rem;
+    }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1440px) {
       font-size: 5rem;
     }
   }
