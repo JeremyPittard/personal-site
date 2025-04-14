@@ -8,13 +8,13 @@
     and ones specially designed for folks with ADHD or dyslexia. Makes reading a
     whole lot easier for some brains!
   </p>
-  <button type="button" class="closePopover">Got it!</button>
+  <button type="button" class="closeButton">Got it!</button>
 </div>
 <script>
   document.addEventListener("astro:page-load", () => {
     const hasClosedNotification = localStorage.getItem("hasClosedNotification");
     const popOver = document.getElementById("readingPreferenceNotification");
-    const closeBtn = document.querySelector(".closePopover");
+    const closeBtn = document.querySelector(".closeButton");
 
     const closePopover = () => {
       localStorage.setItem("hasClosedNotification", "true");
@@ -44,13 +44,16 @@
     height: max-content;
     font-family: var(--font-family-sans);
     padding: var(--spacing-xxs) var(--spacing-xs);
-    display: flex;
     flex-direction: column;
 
     button {
       border: 1px solid var(--color-background);
       padding: var(--spacing-xxs) var(--spacing-xs);
       align-self: flex-end;
+    }
+
+    &:popover-open {
+      display: flex;
     }
   }
 </style>
