@@ -1,12 +1,12 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
 <div id="readingPreferenceNotification" class="popover" popover="manual">
   <p>
-    Hey! Spot that font button? Give it a click to switch between regular fonts
-    and ones specially designed for folks with ADHD or dyslexia. Makes reading a
-    whole lot easier for some brains!
+    Hey! Spot that <Icon name={"lucide:settings"} /> font settings button? Give it
+    a click to switch between regular fonts and ones specially designed for folks
+    with ADHD or dyslexia. Makes reading a whole lot easier for some brains!
   </p>
   <button type="button" class="closeButton">Got it!</button>
 </div>
@@ -45,6 +45,10 @@
     font-family: var(--font-family-sans);
     padding: var(--spacing-xxs) var(--spacing-xs);
     flex-direction: column;
+
+    svg {
+      display: inline;
+    }
 
     button {
       border: 1px solid var(--color-background);
