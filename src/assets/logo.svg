@@ -1,13 +1,4 @@
 <svg width="90" height="125" viewBox="0 0 90 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <style>
-        path {
-        fill: #1b0f12;
-        stroke: #1b0f12;
-        }
-        @media (prefers-color-scheme: dark) {
-        path { fill: #fff9f1; stroke: #fff9f1; }
-        }
-    </style>
     <path
         d="M38.6082 18.9794L40.5496 11.2217L41.1968 8.63576L38.8688 2.42477L35.1596 6.90378L26.5337 15.5154L3.23581 108.608L1.29432 116.365L2.4149 122.23L7.33158 118.097L15.3103 112.072L38.6082 18.9794Z"
         fill="#1B0F12" stroke="#1B0F12" />
