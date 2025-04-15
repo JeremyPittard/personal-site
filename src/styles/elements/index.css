@@ -57,4 +57,19 @@ h3 {
 a:not(.card__link) {
   position: relative;
   text-decoration: underline;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-text);
+  }
+}
+
+time {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
 }

@@ -32,9 +32,16 @@ const { Content } = await render(thought);
   description={thought?.data?.properties?.Description}
 >
   <TagList tags={thought.data.properties.Tags.multi_select} />
+
   <h1>
     {thought?.data?.properties?.Name}
   </h1>
+  <div class="details">
+    Posted on:
+    <time datetime={thought.data.properties.Published?.stamp}
+      >{thought.data.properties.Published?.date}</time
+    > by Jeremy Pittard.
+  </div>
   <!-- {
     thought?.data?.cover?.type === "file" ? (
     <Image
@@ -89,5 +96,13 @@ const { Content } = await render(thought);
     ul {
       list-style-type: disc;
     }
+  }
+
+  .details {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--color-text);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
   }
 </style>
