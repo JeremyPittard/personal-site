@@ -118,7 +118,7 @@ import { Icon } from "astro-icon/components";
 </style>
 <script>
   document.addEventListener("astro:page-load", () => {
-    const fontSettings = localStorage.getItem("fontSettings");
+    const fontSettings = localStorage.getItem("fontSettings") ?? null;
     const popOver = document.getElementById("readingOptions");
     const closeBtn = document.querySelector(".closeReadingOptions");
     const radioBtns: NodeListOf<HTMLInputElement> = document.querySelectorAll(
@@ -132,17 +132,17 @@ import { Icon } from "astro-icon/components";
       localStorage.setItem("fontSettings", event.target.value);
     };
 
-    if (fontSettings) {
+    if (fontSettings && contentContainer) {
       contentContainer.style.fontFamily = `var(${fontSettings})`;
     }
 
     closeBtn?.addEventListener("click", () => popOver?.hidePopover());
 
-    radioBtns.forEach((radio) => {
-      if (radio.value === fontSettings) {
+    radioBtns?.forEach((radio) => {
+      if (radio?.value === fontSettings) {
         radio.checked = true;
       }
-      radio.addEventListener("change", (event: any) => {
+      radio?.addEventListener("change", (event: any) => {
         swapText(event);
       });
     });
