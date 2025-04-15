@@ -1,11 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import { Image } from "astro:assets";
 import TagList from "../../components/TagList.astro";
 import Popover from "../../components/Popover.astro";
 import ReadingOptions from "../../components/ReadingOptions.astro";
-import { undefined } from "astro:schema";
 
 export async function getStaticPaths() {
   const thoughts = await getCollection("thoughts");
