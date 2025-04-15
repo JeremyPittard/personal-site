@@ -14,6 +14,7 @@ const { data, featured } = Astro.props;
   <a
     class="card__link"
     href={`/thoughts/${data.properties.Name.replaceAll(" ", "-").trim()}`}
+    data-goatcounter-click={data.properties.Name.replaceAll(" ", "-").trim()}
   >
     {
       featured ? (
@@ -51,10 +52,6 @@ const { data, featured } = Astro.props;
         color: var(--color-alto-700);
       }
     }
-  }
-
-  li:has(.featured) {
-    margin-bottom: var(--spacing-lg);
   }
 
   h3 {
