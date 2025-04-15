@@ -14,7 +14,6 @@ const { data, featured } = Astro.props;
   <a
     class="card__link"
     href={`/thoughts/${data.properties.Name.replaceAll(" ", "-").trim()}`}
-    data-goatcounter-click={`internal click: ${data.properties.Name.replaceAll(" ", "-").trim()}`}
   >
     {
       featured ? (
