@@ -26,8 +26,10 @@ const links: footerLinks[] = [
     <Icon name="star" />
   </div>
   Want to get in touch?<br /> Email me at
-  <a href="mailto:jeremy@jpittard.net">jeremy@jpittard.net</a>.<br />I am also
-  on
+  <a
+    href="mailto:jeremy@jpittard.net"
+    data-goatcounter-click="internal click: email">jeremy@jpittard.net</a
+  >.<br />I am also on
   {
     links.map((link, index) => (
       <>
@@ -36,7 +38,7 @@ const links: footerLinks[] = [
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          data-goatcounter-click={link.title}
+          data-goatcounter-click={`external click: ${link.title}`}
         >
           {link.title}
         </a>
