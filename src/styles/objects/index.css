@@ -2,3 +2,13 @@
   max-width: var(--max-page-width);
   padding-inline: var(--spacing-lg);
 }
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+
+  .radio-option {
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+  }
+}
