@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import TagList from "../../components/TagList.astro";
 import Popover from "../../components/Popover.astro";
 import ReadingOptions from "../../components/ReadingOptions.astro";
+import { undefined } from "astro:schema";
 
 export async function getStaticPaths() {
   const thoughts = await getCollection("thoughts");
@@ -25,11 +26,16 @@ export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { thought } = Astro.props;
 
 const { Content } = await render(thought);
+const OgImage =
+  thought?.data?.cover?.type === "file"
+    ? thought?.data?.cover?.file?.url
+    : null;
 ---
 
 <BlogLayout
   title={thought?.data?.properties?.Name}
   description={thought?.data?.properties?.Description}
+  ogImage={OgImage}
 >
   <TagList tags={thought.data.properties.Tags.multi_select} />
 

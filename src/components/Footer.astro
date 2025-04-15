@@ -1,23 +1,59 @@
 ---
+import { Icon } from "astro-icon/components";
+
 // TODO
 // also get this into notion
+
+interface footerLinks {
+  title: string;
+  url: string;
+}
+
+const links: footerLinks[] = [
+  { title: "LinkedIn", url: "https://www.linkedin.com/in/jeremypittard/" },
+  {
+    title: "Bluesky",
+    url: "https://bsky.app/profile/nosuchmanasjezz.bsky.social",
+  },
+  { title: "Github", url: "https://github.com/JeremyPittard/" },
+];
 ---
 
 <footer class="footer content mx-auto mt-auto">
-  Get in touch at <a href="mailto:jeremy@jpittard.net">jeremy@jpittard.net</a> I
-  am also on <a
-    href="https://www.linkedin.com/in/jeremypittard/"
-    target="_blank"
-    rel="noopener noreferrer">LinkedIn</a
-  > &amp;
-  <a
-    href="https://bsky.app/profile/nosuchmanasjezz.bsky.social"
-    target="_blank"
-    rel="noopener noreferrer">Bluesky</a
-  > (well, trying).
+  <div class="icons">
+    <Icon name="star" />
+    <Icon name="star" />
+    <Icon name="star" />
+  </div>
+  Want to get in touch?<br /> Email me at
+  <a href="mailto:jeremy@jpittard.net">jeremy@jpittard.net</a>.<br />I am also
+  on
+  {
+    links.map((link, index) => (
+      <>
+        {index < links.length - 1 ? null : "&"}
+        <a href={link.url} target="_blank" rel="noopener noreferrer">
+          {link.title}
+        </a>
+        <Icon name="radix-icons:external-link" height={12} width={12} />
+        {index < links.length - 1 ? ", " : "."}
+      </>
+    ))
+  }
 </footer>
 <style>
   footer {
     margin-top: 10rem;
+
+    svg {
+      display: inline;
+    }
+  }
+  .icons {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
   }
 </style>

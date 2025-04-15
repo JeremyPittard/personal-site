@@ -54,7 +54,7 @@ h3 {
   font-family: var(--font-title);
 }
 
-a:not(.card__link) {
+a:not(.card__link):not(.home-link) {
   position: relative;
   text-decoration: underline;
   z-index: 0;
@@ -64,14 +64,15 @@ a:not(.card__link) {
     content: " ";
     position: absolute;
     top: 0;
-    left: 0;
+    left: -4px;
     height: 100%;
     width: 100%;
     background-color: var(--color-text);
     transform-origin: bottom;
-    scale: 1.25 0;
+    scale: 1 0;
     transition: scale 100ms ease;
     z-index: -1;
+    padding-inline: 4px;
   }
 
   &:hover {
@@ -79,7 +80,7 @@ a:not(.card__link) {
     text-decoration: none;
 
     &::after {
-      scale: 1.25 1;
+      scale: 1 1;
     }
   }
 }
