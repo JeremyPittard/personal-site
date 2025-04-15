@@ -23,7 +23,7 @@ export default defineConfig({
   integrations: [
     icon(),
     partytown({
-      config: { forward: ["goatcounter"] },
+      config: { forward: ["goatcounter", "goatcounter.count"] },
     }),
   ],
 });
