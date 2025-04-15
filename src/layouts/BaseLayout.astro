@@ -36,10 +36,6 @@ const ogImage = Astro.props.ogImage || baseOgImage.src;
       <slot />
     </div>
     <Footer />
-    {
-      import.meta.env.MODE === "production" ? (
-        <script type="text/partytown" async src="//gc.zgo.at/count.js" />
-      ) : null
-    }
+    <script type="text/partytown" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

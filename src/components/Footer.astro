@@ -32,7 +32,12 @@ const links: footerLinks[] = [
     links.map((link, index) => (
       <>
         {index < links.length - 1 ? null : "&"}
-        <a href={link.url} target="_blank" rel="noopener noreferrer">
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-goatcounter-click={link.title}
+        >
           {link.title}
         </a>
         <Icon name="radix-icons:external-link" height={12} width={12} />
