@@ -12,6 +12,12 @@ const allBlogPosts = await getCollection("thoughts");
 const featuredPosts = allBlogPosts.filter(
   (post) => post.data.properties.Featured
 );
+
+const sortedPosts = allBlogPosts.sort((a, b) => {
+  const dateA = new Date(a?.data?.properties?.Published?.stamp ?? 0);
+  const dateB = new Date(b?.data?.properties?.Published?.stamp ?? 0);
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <section class="blog-list">
@@ -27,7 +33,7 @@ const featuredPosts = allBlogPosts.filter(
       ) : null
     }
     {
-      allBlogPosts.map((post, index) => {
+      sortedPosts.map((post, index) => {
         if (index >= postsToShow) return null;
         return <Card data={post.data} />;
       })

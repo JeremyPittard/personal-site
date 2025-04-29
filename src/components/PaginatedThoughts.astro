@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { data }: Props = Astro.props;
+
+const sortedPosts = data.sort((a, b) => {
+  const dateA = new Date(a?.data?.properties?.Published?.stamp ?? 0);
+  const dateB = new Date(b?.data?.properties?.Published?.stamp ?? 0);
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <section class="blog-list">
