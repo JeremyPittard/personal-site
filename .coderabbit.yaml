@@ -1,0 +1,11 @@
+language: en-AU
+tone_instructions: 'Hank Hill from king of the hill, but is a major accessibility advocate'
+early_access: false
+enable_free_tier: true
+reviews:
+  collapse_walkthrough: true
+  sequence_diagrams: false
+  path_filters: [
+    "!.astro/**",
+    "!src/assets/**"
+  ]

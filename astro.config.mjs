@@ -7,10 +7,6 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: {
-    svg: true,
-  },
-
   image: {
     remotePatterns: [
       {
