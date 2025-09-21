@@ -11,7 +11,7 @@ export default defineConfig({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.amazonaws.com",
+        hostname: "*.amazonaws.com",
       },
     ],
   },
