@@ -17,7 +17,7 @@
     "@fontsource/opendyslexic": "^5.2.5",
     "astro": "^5.6.1",
     "astro-icon": "^1.1.5",
-    "notion-astro-loader": "^0.4.0"
+    "@chlorinec-pkgs/notion-astro-loader": "^1.1.2"
   },
   "devDependencies": {
     "@iconify-json/radix-icons": "^1.2.2"
