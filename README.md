@@ -2,9 +2,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a309744c-cec7-4b56-8b38-410bc784fcab/deploy-status)](https://app.netlify.com/sites/jpittard/deploys)
 
-    "notion-astro-loader": "^0.4.0"
-
-
 This site is built with [Astro](https://astro.build). It’s a space for my portfolio, blog, and whatever else I feel like sharing. Think of it as my digital playground.
 
 ## 🌟 Features
