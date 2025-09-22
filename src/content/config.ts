@@ -1,6 +1,8 @@
 // src/content/config.ts
 import { defineCollection, z } from "astro:content";
-import { notionLoader, notionPageSchema } from "notion-astro-loader";
+// import { notionLoader, notionPageSchema } from "notion-astro-loader";
+import { notionLoader, notionPageSchema } from '@chlorinec-pkgs/notion-astro-loader';
+
 import {
   transformedPropertySchema,
   propertySchema,
