@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
+import netlify from "@astrojs/netlify";
+
 import icon from "astro-icon";
 
 import partytown from "@astrojs/partytown";
@@ -21,5 +23,6 @@ export default defineConfig({
     partytown({
       config: { forward: ["goatcounter", "goatcounter.count"] },
     }),
+    netlify(),
   ],
 });
