@@ -9,37 +9,45 @@ interface Props {
 
 const { postsToShow = 10, showAllPostsLink }: Props = Astro.props;
 const allBlogPosts = await getCollection("thoughts");
-const featuredPosts = allBlogPosts.filter(
-  (post) => post.data.properties.Featured
-);
+
+console.log(allBlogPosts);
+const featuredPosts = allBlogPosts.filter((post) => post.data.isFeatured);
 
 const sortedPosts = allBlogPosts.sort((a, b) => {
-  const dateA = new Date(a?.data?.properties?.Published?.stamp ?? 0);
-  const dateB = new Date(b?.data?.properties?.Published?.stamp ?? 0);
+  const dateA = new Date(a?.data?.publishDate ?? 0);
+  const dateB = new Date(b?.data?.publishDate ?? 0);
   return dateB.getTime() - dateA.getTime();
 });
 ---
 
-<section class="blog-list">
-  <div class="head">
-    <h2>Latest thoughts:</h2>
-    <a href="/thoughts" class="see-all"> see all </a>
-    {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
-  </div>
-  <ul>
-    {
-      featuredPosts.length > 0 ? (
-        <Card data={featuredPosts[0].data} featured={true} />
-      ) : null
-    }
-    {
-      sortedPosts.map((post, index) => {
-        if (index >= postsToShow) return null;
-        return <Card data={post.data} />;
-      })
-    }
-  </ul>
-</section>
+<>
+  <section class="blog-list">
+    <div class="head">
+      <h2>Latest thoughts:</h2>
+      {
+        showAllPostsLink ? (
+          <a href="/thoughts" class="see-all">
+            See all thoughts
+          </a>
+        ) : null
+      }
+      {allBlogPosts.length === 0 ? <h2>nothing to see here</h2> : null}
+    </div>
+    <ul>
+      {
+        featuredPosts.length > 0 ? (
+          <Card data={featuredPosts[0].data} featured={true} />
+        ) : null
+      }
+      {
+        sortedPosts.map((post, index) => {
+          if (index >= postsToShow) return null;
+          return <Card data={post.data} />;
+        })
+      }
+    </ul>
+  </section>
+</>
 <style>
   .blog-list {
     margin-block: var(--spacing-xl);

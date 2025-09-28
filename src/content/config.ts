@@ -1,59 +1,47 @@
-// src/content/config.ts
 import { defineCollection, z } from "astro:content";
-import { notionLoader, notionPageSchema } from "notion-astro-loader";
-import {
-  transformedPropertySchema,
-  propertySchema,
-} from "notion-astro-loader/schemas";
+import { HygraphLoader } from "@hygraph/hygraph-astro-loader";
+
+const HeroImageSchema = z.object({
+  // Assuming you query id and url for the asset
+  id: z.string().optional(),
+  url: z.string().url(),
+});
+
+// Rich Text Content Schema: The structure for the Rich Text field when querying its 'html'.
+const BlogContentSchema = z.object({
+  html: z.string(),
+});
 
 const thoughts = defineCollection({
-  loader: notionLoader({
-    auth: import.meta.env.NOTION_TOKEN,
-    database_id: import.meta.env.NOTION_DATABASE_ID,
-    // Use Notion sorting and filtering
-    filter: {
-      property: "draft",
-      checkbox: { equals: false },
-    },
+  loader: HygraphLoader({
+    endpoint: import.meta.env.HYGRAPH,
+    operation: "blogs",
+    fields: [
+      "id",
+      "createdAt",
+      "updatedAt",
+
+      "title",
+      "description",
+      "publishDate",
+      "isFeatured",
+      "tags",
+      { heroImage: ["url", "id"] },
+      { blogContent: ["html"] },
+    ],
   }),
-  schema: notionPageSchema({
-    properties: z.object({
-      Name: transformedPropertySchema.title,
-      Description: transformedPropertySchema.rich_text.optional(),
-      Draft: transformedPropertySchema.checkbox.optional(),
-      Created: transformedPropertySchema.created_time.optional(),
-      URL: transformedPropertySchema.rich_text.optional(),
-      "Short name": transformedPropertySchema.rich_text.optional(),
-      "Last visited": propertySchema.date
-        .optional()
-        .transform((property) =>
-          property?.date?.start ? new Date(property.date.start) : undefined
-        ),
-      Featured: transformedPropertySchema.checkbox.optional(),
-      Published: propertySchema.date.optional().transform((property) =>
-        property?.date?.start
-          ? {
-              date: new Date(property.date.start).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }),
-              stamp: property.date.start,
-            }
-          : undefined
-      ),
-      Tags: z.object({
-        id: z.string(),
-        type: z.literal("multi_select"),
-        multi_select: z.array(
-          z.object({
-            id: z.string(),
-            name: z.string(),
-            color: z.string(),
-          })
-        ),
-      }),
-    }),
+
+  schema: z.object({
+    id: z.string(),
+    createdAt: z.string().optional(), // Required date, transformed
+    updatedAt: z.string().optional(),
+    title: z.string().min(1, "Title is required."),
+    description: z.string().nullable().optional(),
+    publishDate: z.string().optional(),
+    isFeatured: z.boolean().nullable(),
+    heroImage: HeroImageSchema.nullable().optional(),
+    blogContent: BlogContentSchema.nullable().optional(),
+    tags: z.array(z.string()).nullable().optional(),
   }),
 });
 

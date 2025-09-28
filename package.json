@@ -15,9 +15,9 @@
     "@fontsource-variable/space-grotesk": "^5.2.6",
     "@fontsource/atkinson-hyperlegible-next": "^5.2.2",
     "@fontsource/opendyslexic": "^5.2.5",
+    "@hygraph/hygraph-astro-loader": "^0.2.0",
     "astro": "^5.13.9",
-    "astro-icon": "^1.1.5",
-    "notion-astro-loader": "^0.4.0"
+    "astro-icon": "^1.1.5"
   },
   "devDependencies": {
     "@iconify-json/radix-icons": "^1.2.2"
