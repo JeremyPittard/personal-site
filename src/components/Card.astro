@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import TagList from "./TagList.astro";
+import { createSlug } from "../utils/helpers";
 
 interface Props {
   data: any;
@@ -8,13 +9,12 @@ interface Props {
 }
 
 const { data, featured } = Astro.props;
+
+const date = new Date(data?.publishDate ?? 0);
 ---
 
 <li>
-  <a
-    class="card__link"
-    href={`/thoughts/${data.properties.Name.replaceAll(" ", "-").trim()}`}
-  >
+  <a class="card__link" href={`/thoughts/${createSlug(data.title)}`}>
     {
       featured ? (
         <p class="featured">
@@ -24,12 +24,10 @@ const { data, featured } = Astro.props;
       ) : null
     }
     <div>
-      <h3>{data.properties.Name}</h3>
-      <time datetime={data.properties.Published?.stamp}
-        >{data.properties.Published?.date}</time
-      >
+      <h3>{data.title}</h3>
+      <time datetime={data.publishDate}>{data?.publishDate}</time>
     </div>
-    <TagList tags={data.properties.Tags.multi_select} />
+    <TagList tags={data.tags} />
   </a>
 </li>
 <style>

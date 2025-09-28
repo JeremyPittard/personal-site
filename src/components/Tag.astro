@@ -1,19 +1,13 @@
 ---
-interface tag {
-  id: string;
-  name: string;
-  color: string;
-}
-
 interface Props {
-  tag: tag;
+  tag: string;
 }
 
 const { tag } = Astro.props;
 ---
 
 <li>
-  {tag.name}
+  {tag}
 </li>
 
 <style>

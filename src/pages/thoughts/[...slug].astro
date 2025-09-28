@@ -4,6 +4,7 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 import TagList from "../../components/TagList.astro";
 import Popover from "../../components/Popover.astro";
 import ReadingOptions from "../../components/ReadingOptions.astro";
+import { createSlug } from "../../utils/helpers";
 
 export async function getStaticPaths() {
   const thoughts = await getCollection("thoughts");
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
   return thoughts.map((thought) => {
     return {
       params: {
-        slug: thought.data.properties.Name.replaceAll(" ", "-").trim(),
+        slug: createSlug(thought.data.title),
       },
       props: {
         thought,
@@ -23,27 +24,25 @@ export async function getStaticPaths() {
 export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { thought } = Astro.props;
 
-const { Content } = await render(thought);
-const OgImage =
-  thought?.data?.cover?.type === "file"
-    ? thought?.data?.cover?.file?.url
-    : null;
+const OgImage = thought.data.heroImage?.url
+  ? thought.data.heroImage?.url
+  : null;
 ---
 
 <BlogLayout
-  title={thought?.data?.properties?.Name}
-  description={thought?.data?.properties?.Description}
+  title={thought?.data.title}
+  description={thought?.data?.description ?? ""}
   ogImage={OgImage}
 >
-  <TagList tags={thought.data.properties.Tags.multi_select} />
+  <TagList tags={thought.data.tags} />
 
   <h1>
-    {thought?.data?.properties?.Name}
+    {thought?.data?.title}
   </h1>
   <div class="details">
     Posted on:
-    <time datetime={thought.data.properties.Published?.stamp}
-      >{thought.data.properties.Published?.date}</time
+    <time datetime={thought?.data?.publishDate}
+      >{thought?.data?.publishDate}</time
     > by Jeremy Pittard.
   </div>
   <!-- {
@@ -59,7 +58,7 @@ const OgImage =
     } -->
   <div class="blog-content">
     <Popover />
-    <Content />
+    <div set:html={thought?.data?.blogContent?.html} />
   </div>
   <ReadingOptions />
 </BlogLayout>
