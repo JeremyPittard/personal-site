@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import TagList from "./TagList.astro";
-import { createSlug } from "../utils/helpers";
+import { createSlug, formatDate } from "../utils/helpers";
 
 interface Props {
   data: any;
@@ -10,7 +10,7 @@ interface Props {
 
 const { data, featured } = Astro.props;
 
-const date = new Date(data?.publishDate ?? 0);
+const formattedDate = formatDate(data.publishDate);
 ---
 
 <li>
@@ -25,7 +25,7 @@ const date = new Date(data?.publishDate ?? 0);
     }
     <div>
       <h3>{data.title}</h3>
-      <time datetime={data.publishDate}>{data?.publishDate}</time>
+      <time datetime={formattedDate}>{formattedDate}</time>
     </div>
     <TagList tags={data.tags} />
   </a>

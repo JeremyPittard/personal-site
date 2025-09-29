@@ -30,3 +30,17 @@ export const createSlug = (string: string) => {
       .replace(/^-+|-+$/g, "")
   );
 };
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const options: any = {
+    // weekday: "long", // "Sunday"
+    month: "long", // "September"
+    day: "numeric", // "28" (or '2-digit' for "01", "28")
+    year: "numeric", // "2025"
+    timeZone: "UTC", // Keep timeZone as UTC to ensure the date is correctly 28th
+  };
+
+  return date.toLocaleString("en-AU", options);
+};

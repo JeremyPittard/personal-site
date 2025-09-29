@@ -4,7 +4,7 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 import TagList from "../../components/TagList.astro";
 import Popover from "../../components/Popover.astro";
 import ReadingOptions from "../../components/ReadingOptions.astro";
-import { createSlug } from "../../utils/helpers";
+import { createSlug, formatDate } from "../../utils/helpers";
 
 export async function getStaticPaths() {
   const thoughts = await getCollection("thoughts");
@@ -27,6 +27,10 @@ const { thought } = Astro.props;
 const OgImage = thought.data.heroImage?.url
   ? thought.data.heroImage?.url
   : null;
+
+const formattedDate = thought.data.publishDate
+  ? formatDate(thought.data.publishDate)
+  : null;
 ---
 
 <BlogLayout
@@ -41,9 +45,7 @@ const OgImage = thought.data.heroImage?.url
   </h1>
   <div class="details">
     Posted on:
-    <time datetime={thought?.data?.publishDate}
-      >{thought?.data?.publishDate}</time
-    > by Jeremy Pittard.
+    <time datetime={formattedDate}>{formattedDate}</time> by Jeremy Pittard.
   </div>
   <!-- {
     thought?.data?.cover?.type === "file" ? (
@@ -58,7 +60,7 @@ const OgImage = thought.data.heroImage?.url
     } -->
   <div class="blog-content">
     <Popover />
-    <div set:html={thought?.data?.blogContent?.html} />
+    <Fragment set:html={thought?.data?.blogContent?.html} />
   </div>
   <ReadingOptions />
 </BlogLayout>
