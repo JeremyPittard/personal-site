@@ -130,8 +130,10 @@ import Logo from "../assets/footylogo.svg";
 
     // Apply the "Match" state based on user's local time
     if (answerElement) {
-      const answer = goals * 6 + behinds === total;
-      answerElement.innerHTML = answer ? "✔️" : "❌";
+      setTimeout(() => {
+        const answer = goals * 6 + behinds === total;
+        answerElement.innerHTML = answer ? "✔️" : "❌";
+      }, 3000);
     }
   }
 
