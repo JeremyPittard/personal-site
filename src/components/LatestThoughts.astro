@@ -10,7 +10,6 @@ interface Props {
 const { postsToShow = 10, showAllPostsLink }: Props = Astro.props;
 const allBlogPosts = await getCollection("thoughts");
 
-console.log(allBlogPosts);
 const featuredPosts = allBlogPosts.filter((post) => post.data.isFeatured);
 
 const sortedPosts = allBlogPosts.sort((a, b) => {

@@ -1,0 +1,18 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/Hero.astro";
+import LatestThoughts from "../components/LatestThoughts.astro";
+import FootyScoreDayHero from "../components/FootyScoreDayHero.astro";
+---
+
+<PageLayout
+  title="Jeremy Pittard | Front End Developer | Perth, Western Australia"
+  description="I build fast, accessible things."
+>
+  <header>
+    <FootyScoreDayHero />
+  </header>
+</PageLayout>
+<main class="content mx-auto">
+  <LatestThoughts postsToShow={4} showAllPostsLink />
+</main>
