@@ -25,30 +25,37 @@ const links: footerLinks[] = [
     <Icon name="star" />
     <Icon name="star" />
   </div>
-  Want to get in touch? Email me at
-  <a href="mailto:jeremy@jpittard.net">jeremy@jpittard.net</a>. I am also on
-  {
-    links.map((link, index) => (
-      <>
-        {index < links.length - 1 ? null : "&"}
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-goatcounter-click={`external click: ${link.title}`}
-        >
-          {link.title}
-          <Icon name="radix-icons:external-link" height={12} width={12} />
-        </a>
-        {index < links.length - 1 ? ", " : "."}
-      </>
-    ))
-  }
+  <p>
+    Want to get in touch? Email me at
+    <a href="mailto:jeremy@jpittard.net">jeremy@jpittard.net</a>
+    .
+    <br />I am also on
+    {
+      links.map((link, index) => (
+        <>
+          {index < links.length - 1 ? null : "&"}
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-goatcounter-click={`external click: ${link.title}`}
+          >
+            {link.title}
+            <Icon name="radix-icons:external-link" height={12} width={12} />
+          </a>
+          {index < links.length - 1 ? ", " : "."}
+        </>
+      ))
+    }
+  </p>
 </footer>
 <style>
   footer {
     --max-page-width: 35em;
     margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     a {
       display: inline-block;
       margin: 0;
